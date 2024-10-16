@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content -%}
+
+
+<div style="z-index: 6;" class="m-0 p-0 ms-auto me-auto container-xxl">
+
+    <div class="m-0 p-0 row justify-content-center">
+
+        <a class="m-0 p-1 col-12 border-0" href="/post/{{ p.id }}">
+
+            <div style="height: 240px; width:100%;"
+                class="o_post m-0 p-0 row d-flex align-items-center border-primary rounded" type="button">
+
+                <img style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px); opacity: 0.85;"
+                    class="m-0 p-0 rounded" src="{{ p.img }}">
+
+                <span
+                    style="position: absolute; text-shadow: 0 0 10px #000000, 0 0 15px #000000, 0 0 15px #000000, 0 0 20px #000000, 0 0 25px #000000;"
+                    class="m-0 p-3 fs-1 fw-medium text-center">{{ p.title
+                    }}</span>
+            </div>
+
+        </a>
+
+
+        <div class="m-0 p-0 ms-1 me-1 pb-1 accordion-item border-0 bg-transparent">
+
+            <div class="m-0 p-0 o_text border-0">
+                <a href="#top" class="m-0 p-0 row justify-content-center">
+
+                    {% for i in range(10) %}
+
+                    {% if p['text_' ~ (i) ~ "0"] %}
+                    <div style="height: 60px;"></div>
+                    {% if p['title_' ~ (i)] %}
+                    <p
+                        class="m-0 p-2 mb-3 ps-3 pe-3 col-12 col-sm-10 col-md-9 col-lg-7 col-xl-6 fs-4 bg-primary text-white fw-medium text-center border-0 rounded">
+                        {{ p['title_' ~ (i)] }}
+                    </p>
+                    {% else %}
+                    <p
+                        class="m-0 p-2 mb-3 ps-3 pe-3 col-12 col-sm-10 col-md-9 col-lg-7 col-xl-6 fs-4 bg-primary text-white fw-medium text-center border-0 rounded">
+                        Technology.pl
+                    </p>
+                    {% endif %}
+
+                    {% endif %}
+
+                    {% for k in range(10) %}
+                    {% if p['text_' ~ (i) ~ (k)] %}
+                    <div style="outline: none; text-align: justify; display: block;"
+                        class="m-1 p-3 pt-0 col-12 col-sm-10 col-md-9 col-lg-7 col-xl-6 fs-6 text-white bg-dark">
+                        <span class="m-0 p-0 ps-2 pe-2 col-auto fs-6 fw-medium bg-primary rounded">{{ k+1 }}</span>
+                        {{ p['text_' ~ (i) ~ (k)] }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    <div class="m-0 p-0 ps-3 d-flex flex-wrap justify-content-center">
+                        {% for j in range(1, 7) %}
+                        {% if p['img_' ~ (i) ~ j] %}
+                        <div
+                            class="m-1 p-3 pt-0 ps-0 col-12 col-sm-10 col-md-9 col-lg-7 col-xl-6 d-flex align-items-stretch">
+                            <img style="width: 100%; height: 100%; object-fit: cover;"
+                                class="m-0 p-0 rounded border border-primary border-3" src="{{ p['img_' ~ (i) ~ j] }}"
+                                alt="Image {{ j }} for item {{ i }}">
+                        </div>
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>
+
+
+                    {% endfor %}
+
+                </a>
+            </div>
+
+        </div>
+
+        <div class="m-0 p-0 col-12">
+            <div class="m-0 p-0 row justify-content-center align-items-center">
+
+                <p class="m-0 p-0 p-1 ps-3 pe-3 col-auto text-secondary text-start border-1 border-primary fw-bold">
+                    {{ p.cat }}
+                </p>
+
+                <p class="m-0 p-0 pe-3 col text-secondary text-end border-1 border-primary fw-bold">{{ p.time }}</p>
+
+            </div>
+        </div>
+
+        <div style="height: 60px;"></div>
+
+        {% for n in posts %}
+        {% if n.id != p.id %}
+
+        <a class="m-0 p-1 col-12 col-sm-9 col-md-6 col-lg-6 col-xl-4 col-xxl-4 accordion-item border-0 bg-transparent"
+            href="/post/{{ n.id }}">
+
+            <div style="height: 240px;" class="o_post m-0 p-0 row d-flex align-items-center rounded">
+
+                {% if n.img %}
+                <img style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px); opacity: 0.85;"
+                    class="m-0 p-0 rounded" src="{{ n.img }}">
+                {% endif %}
+
+                <span
+                    style="position: absolute; text-shadow: 0 0 10px #000000, 0 0 15px #000000, 0 0 15px #000000, 0 0 20px #000000, 0 0 25px #000000;"
+                    class="m-0 p-3 fs-5 fw-medium text-center">{{ n.title
+                    }}</span>
+            </div>
+
+        </a>
+        {%endif %}
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock content -%}

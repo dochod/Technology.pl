@@ -1,0 +1,105 @@
+<!-- PAGINATION -->
+
+<div class="m-0 p-0 container-fluid">
+    <div class="m-0 p-0 row justify-content-center align-items-center">
+
+        <p style="height: 56px;" class="m-0 p-3 col-12 fs-6 fw-medium bg-dark text-dark text-center">.</p>
+
+        <!-- index -->
+        {% if index %}
+
+        {% if page > 1 %}
+        <a style="height: 60px; width: 60px;"
+            class="o_btn ps-1 fs-1 fw-medium d-flex justify-content-center align-items-center rounded-start-pill"
+            href="{{ url_for('index', page=page-1) }}"><img style="height: 80%;" class="m-0 p-0"
+                src="/static/img/back.png" alt=""></a>
+        {% else %}
+        <p style="height: 60px; width: 60px;"
+            class="o_btn ps-1 fs-1 fw-medium border-primary d-flex justify-content-center align-items-center rounded-start-pill">
+            <img style="height: 80%;" class="m-0 p-0" src="/static/img/back.png" alt="">
+        </p>
+        {% endif %}
+
+        <span style="height: 60px; width: 60px;"
+            class="m-0 p-0 col-auto fs-6 fw-medium d-flex justify-content-center align-items-center">{{ page
+            }}</span>
+
+        {% if page < total_pages %} <a style="height: 60px; width: 60px;"
+            class="o_btn pe-1 fs-1 fw-medium d-flex justify-content-center align-items-center rounded-end-pill"
+            href="{{ url_for('index', page=page+1) }}"><img style="height: 80%;" class="m-0 p-0"
+                src="/static/img/next.png" alt=""></a>
+            {% else %}
+            <p style="height: 60px; width: 60px;"
+                class="o_btn pe-1 fs-1 fw-medium border-primary d-flex justify-content-center align-items-center rounded-end-pill">
+                <img style="height: 80%;" class="m-0 p-0" src="/static/img/next.png" alt="">
+            </p>
+            {% endif %}
+
+            {% endif %}
+
+            <!-- category -->
+            {% if category %}
+
+            {% if page > 1 %}
+            <a style="height: 60px; width: 60px;"
+                class="o_btn ps-1 fs-1 fw-medium text-center d-flex align-items-center rounded-start-pill"
+                href="{{ url_for('category', cat=category, page=page-1) }}"><img style="height: 80%;" class="m-0 p-0"
+                    src="/static/img/back.png" alt=""></a>
+            {% else %}
+            <p style="height: 60px; width: 60px;"
+                class="o_btn ps-1 fs-1 fw-medium text-center border-primary d-flex justify-content-center align-items-center rounded-start-pill">
+                <img style="height: 80%;" class="m-0 p-0" src="/static/img/back.png" alt="">
+            </p>
+            {% endif %}
+
+            <span style="height: 60px; width: 60px;"
+                class="m-0 p-0 col-auto fs-5 fw-medium d-flex justify-content-center align-items-center ">{{ page
+                }}</span>
+
+            {% if page < total_pages %} <a style="height: 60px; width: 60px;"
+                class="o_btn pe-1 fs-1 fw-medium text-center d-flex justify-content-center align-items-center rounded-end-pill"
+                href="{{ url_for('category', cat=category, page=page+1) }}"><img style="height: 80%;" class="m-0 p-0"
+                    src="/static/img/next.png" alt=""></a>
+                {% else %}
+                <p style="height: 60px; width: 60px;"
+                    class="o_btn pe-1 fs-1 fw-medium text-center border-primary d-flex justify-content-center align-items-center rounded-end-pill">
+                    <img style="height: 80%;" class="m-0 p-0" src="/static/img/next.png" alt="">
+                </p>
+                {% endif %}
+
+                {% endif %}
+
+                <!-- see -->
+                {% if see %}
+
+                {% if page > 1 %}
+                <a style="height: 60px; width: 60px;"
+                    class="o_btn ps-1 fs-1 fw-medium text-center d-flex align-items-center rounded-start-pill"
+                    href="{{ url_for('see', cat=category, page=page-1) }}"><img style="height: 80%;"
+                        class="m-0 p-0" src="/static/img/back.png" alt=""></a>
+                {% else %}
+                <p style="height: 60px; width: 60px;"
+                    class="o_btn ps-1 fs-1 fw-medium text-center border-primary d-flex justify-content-center align-items-center rounded-start-pill">
+                    <img style="height: 80%;" class="m-0 p-0" src="/static/img/back.png" alt="">
+                </p>
+                {% endif %}
+
+                <span style="height: 60px; width: 60px;"
+                    class="m-0 p-0 col-auto fs-5 fw-medium d-flex justify-content-center align-items-center ">{{ page
+                    }}</span>
+
+                {% if page < total_pages %} <a style="height: 60px; width: 60px;"
+                    class="o_btn pe-1 fs-1 fw-medium text-center d-flex justify-content-center align-items-center rounded-end-pill"
+                    href="{{ url_for('see', cat=category, page=page+1) }}"><img style="height: 80%;"
+                        class="m-0 p-0" src="/static/img/next.png" alt=""></a>
+                    {% else %}
+                    <p style="height: 60px; width: 60px;"
+                        class="o_btn pe-1 fs-1 fw-medium text-center border-primary d-flex justify-content-center align-items-center rounded-end-pill">
+                        <img style="height: 80%;" class="m-0 p-0" src="/static/img/next.png" alt="">
+                    </p>
+                    {% endif %}
+
+                    {% endif %}
+
+    </div>
+</div>

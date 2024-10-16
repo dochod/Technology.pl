@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="m-0 p-0 ms-auto me-auto container-xxl">
+    <section class="m-0 p-0 row justify-content-center">
+
+        {% if login %}
+        <!-- FORM -->
+        <div class="m-0 p-0 col-12 accordion" id="accordionExample1">
+            <form class="m-0 p-0 row justify-content-center align-items-start" action="" method="post">
+                <div
+                    class="m-0 p-0 ms-sm-1 me-1 pb-1 col col-sm-10 col-md-9 col-lg-7 col-xl-6 accordion-item border-0 bg-transparent">
+
+                    <button style="height: 120px; overflow:hidden"
+                        class="o_post m-0 p-0 fs-4 fw-medium accordion-button collapsed row" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#qqq" aria-expanded="false" aria-controls="qqq">
+
+                        <p class="m-0 p-1 pe-3 col fs-1 fw-medium border-0 bg-primary text-white text-start"><img
+                                style="height: 100%;" class="m-0 p-0" src="/static/img/plus.png" alt=""></p>
+
+                        <span class="m-0 p-1 pe-2 {% if not img %} ps-3 {% endif %} col fs-4 fw-medium">{{ count
+                            }}</span>
+
+                    </button>
+
+                    <div class="m-0 p-0 row">
+                        <div id="qqq"
+                            class="o_text m-0 p-0 col-12 accordion-collapse collapse border-2 rounded border-top-0 rounded-top-0"
+                            data-bs-parent="#accordionExample">
+                            <div class="m-0 p-0 accordion-body row">
+
+                                <input style="outline: none;"
+                                    class="m-0 p-3 col-8 fs-6 fw-medium border-1 border-primary bg-dark text-white"
+                                    name="title" rows="1" placeholder="title" value="">
+
+                                {% if category %}
+                                <input style="outline: none;"
+                                    class="m-0 p-3 col-2 fs-6 border-1 border-primary bg-dark text-white" name="cat"
+                                    value="{{ category }}">
+                                {% else %}
+                                <select class="m-0 p-3 col-2 fs-6 border-1 border-primary bg-dark text-white" name="cat"
+                                    id="cars">
+                                    <option value="">----------</option>
+                                    <option value="Technologii">Technologii</option>
+                                    <option value="Krypto">Krypto</option>
+                                    <option value="AI">AI</option>
+                                </select>
+                                {% endif %}
+
+                                <input style="outline: none;"
+                                    class="m-0 p-3 col-2 fs-6 border-1 border-primary bg-dark text-white" name="img"
+                                    rows="1" placeholder="img">
+
+                                {% for i in range(10) %}
+                                <input style="outline: none;"
+                                    class="m-0 p-2 ps-3 pe-3 col-12 fs-6 fw-medium border-1 border-primary bg-primary text-white"
+                                    name="title_{{ i }}" rows="1" placeholder="title_{{ i }}" value="">
+
+                                {% for k in range(10) %}
+                                <input style="outline: none; text-align: justify; display: block;"
+                                    class="o_text p-3 col-6 fs-6 border-1 border-primary text-white bg-dark"
+                                    name="text_{{ i }}{{ k }}" rows="1" placeholder="text_{{ i }}{{ k }}" value="">
+                                {% endfor %}
+
+                                {% for j in range(1, 7) %}
+                                <input style="outline: none;"
+                                    class="m-0 p-2 ps-3 pe-3 col-4 col-sm-2 fs-6 border-1 border-primary bg-dark text-white"
+                                    name="img_{{ i }}{{ j }}" placeholder="img_{{ i }}{{ j }}">
+                                {% endfor %}
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <input style="position: sticky; top:62.7px; height: 120px; width: 40px;"
+                    class="o_btn m-0 p-0 mb-1 col-auto fs-1 fw-medium d-flex justify-content-center border-3"
+                    type="submit" value="+">
+
+            </form>
+        </div>
+
+        <!-- CHANGE -->
+        <div class="m-0 p-0 col-12 accordion" id="accordionExample">
+            {% for p in posts %}
+            <form class="m-0 p-0 row justify-content-center align-items-start"
+                action="{% if category %} /update/category/{{ category }}/{{ p.id }} {% else %} /update/{{ p.id }} {% endif %}"
+                method="post">
+                <div
+                    class="m-0 p-0 ms-sm-1 me-1 pb-1 col col-sm-10 col-md-9 col-lg-7 col-xl-6 accordion-item border-0 bg-transparent">
+
+                    <button style="height: 120px; overflow:hidden" class="o_post m-0 p-0 accordion-button collapsed row"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#{{ p.id }}" aria-expanded="false"
+                        aria-controls="{{ p.id }}">
+
+                        {% if p.img %}
+                        <img style="width: 100%; height: 100%; object-fit: cover; filter: blur(2px); opacity: 0.85;"
+                            class="m-0 p-0 col-4 col-sm-5 col-md-5" src="{{ p.img }}">
+                        {% endif %}
+
+                        <span
+                            style="position: absolute; text-shadow: 0 0 10px #000000, 0 0 15px #000000, 0 0 15px #000000, 0 0 20px #000000, 0 0 25px #000000;"
+                            class="m-0 p-3 pt-2 pb-2 col fs-5 fw-medium">{{ p.title
+                            }}</span>
+                    </button>
+
+                    <div id="{{ p.id }}"
+                        class="m-0 p-0 o_text accordion-collapse collapse rounded border-2 border-top-0 rounded-top-0"
+                        data-bs-parent="#accordionExample">
+                        <div class="m-0 p-0 accordion-body row">
+
+                            <input style="outline: none;"
+                                class="m-0 p-3 col-8 fs-6 fw-medium border-top border-primary bg-dark text-white"
+                                name="title" rows="1" placeholder="title" value="{{ p.title }}">
+
+                            <select class="m-0 p-3 col-2 fs-6 border-top border-1 border-primary bg-dark text-white"
+                                name="cat">
+                                <option value="{{ p.cat }}">{{ p.cat }}</option>
+                                <option value="{{ p.cat }}">----------</option>
+                                <option value="Technologii">Technologii</option>
+                                <option value="Krypto">Krypto
+                                <option value="AI">AI
+                                </option>
+                            </select>
+
+                            <input style="outline: none; "
+                                class="m-0 p-3 col-2 fs-6 border-top border-1 border-primary bg-dark text-white"
+                                name="img" rows="1" placeholder="img" value="{{ p.img }}">
+
+                            {% for i in range(10) %}
+
+                            <input style="outline: none;"
+                                class="m-0 p-2 ps-3 pe-3 col-12 fs-6 fw-medium border-top border-1 border-primary text-bg-warning bg-primary text-white"
+                                name="title_{{ i }}" rows="1" placeholder="title_{{ i }}"
+                                value="{{ p['title_' ~ (i)] }}">
+
+                            {% for k in range(10) %}
+                            <input style="outline: none; text-align: justify; display: block;"
+                                class="o_text p-2 ps-3 pe-3 col-6 fs-6 border-top border-1 border-primary text-white bg-dark"
+                                name="text_{{ i }}{{ k }}" rows="1" placeholder="text_{{ i }}{{ k }}"
+                                value="{{ p['text_' ~ (i) ~ (k)] }}">
+                            {% endfor %}
+
+                            {% for j in range(1, 7) %}
+                            <input style="outline: none;"
+                                class="m-0 p-2 ps-3 pe-3 col-4 col-sm-2 fs-6 border-top border-1 border-primary bg-dark text-white"
+                                name="img_{{ i }}{{ j }}" placeholder="img_{{ i }}{{ j }}"
+                                value="{{ p['img_' ~ (i) ~ j] }}">
+                            {% endfor %}
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="position: sticky; top:62.7px" class="m-0 p-0 col-auto d-flex flex-column">
+
+                    <button style="height: 40px; width: 40px; vertical-align: middle;"
+                        class="o_btn m-0 p-0 col-auto fs-3 fw-medium d-flex justify-content-center align-items-center border-3"
+                        type="submit"><img style="height: 80%;" class="m-0 p-0" src="/static/img/reload.png"
+                            alt=""></button>
+
+                    <p style="height: 40px; width: 40px;"
+                        class="m-0 p-0 ms-0 me-0 fs-6 text-center text-secondary d-flex justify-content-center align-items-center">
+                        {{ p.id }}</p>
+
+                    <a style="height: 40px; width: 40px;"
+                        class="o_btn m-0 p-2 mb-1 col-auto fs-3 fw-medium text-center d-flex justify-content-center align-items-center border-3"
+                        href="{% if category %} /delete/category/{{ category }}/{{ p.id }} {% else %} /delete/{{ p.id }} {% endif %}"><img
+                            style="height: 150%;" class="m-0 p-0" src="/static/img/delete.png" alt=""></a>
+
+                </div>
+
+            </form>
+            {% endfor %}
+        </div>
+
+        <!-- USERS -->
+        {% else %}
+        {% include "include_user.html" %}
+        {% endif %}
+
+    </section>
+</div>
+
+<!-- PAGINATION -->
+{% include "include_pagination.html" %}
+
+{% endblock content %}

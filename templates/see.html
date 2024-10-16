@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content -%}
+<div class="m-0 p-0 ms-auto me-auto container-xxl">
+    <section class="m-0 p-0 row justify-content-center">
+{% include "include_user.html" %}
+    </section>
+</div>
+
+{% include "include_pagination.html" %}
+
+{% endblock content -%}

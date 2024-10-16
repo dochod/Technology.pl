@@ -1,0 +1,25 @@
+<!-- USERS -->
+
+<div class="m-0 p-0 row justify-content-center">
+    {% for p in posts %}
+    <a
+        class="m-0 p-1 col-12 col-sm-9 col-md-6 col-lg-6 col-xl-4 col-xxl-4 border-0 bg-transparent" href="/post/{{ p.id }}">
+
+        <div style="height: 240px;" class="o_post m-0 p-0 row d-flex align-items-center rounded"
+            >
+
+            {% if p.img %}
+            <img style="width: 100%; height: 100%; object-fit: cover; filter: blur(1px); opacity: 0.85; "
+                class="m-0 p-0 rounded" src="{{ p.img }}">
+            {% endif %}
+
+            <span
+                style="position: absolute; text-shadow: 0 0 10px #000000, 0 0 15px #000000, 0 0 15px #000000, 0 0 20px #000000, 0 0 25px #000000;"
+                class="m-0 p-3 fs-5 fw-medium text-center">{{ p.title
+                }}</span>
+        </div>
+
+    </a>
+    
+    {% endfor %}
+</div>

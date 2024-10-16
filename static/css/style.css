@@ -1,0 +1,190 @@
+body {
+    overflow: visible !important;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+li::marker {
+    color: var(--bs-primary);
+}
+::placeholder {
+    color: var(--bs-warning);
+    font-weight: 900;
+}
+.accordion-button:not(.collapsed)::after {
+    display: none;
+}
+.accordion-button::after {
+    display: none;
+}
+
+/*  */
+
+.o_logo {
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+
+    color: white;
+    background-color: var(--bs-dark);
+    border: 3px solid var(--bs-dark);
+}
+.o_logo:hover {
+    color: white;
+
+    background-color: var(--bs-primary);
+    border: 3px solid var(--bs-primary);
+}
+
+/*  */
+
+.o_cat {
+    margin: 0;
+    padding: 0;
+
+    height: 60px;
+ 
+    cursor: pointer;
+    color: var(--bs-secondary);
+    
+}
+.o_cat:hover  {
+    color: var(--bs-white);
+}
+.o_cat:active  {
+    color: var(--bs-white);
+}
+
+/*  */
+
+.o_post {
+    margin: 0;
+    padding: 0;
+ 
+    cursor: pointer;
+    color: white !important;
+
+    box-shadow: none !important;
+    background-color: var(--bs-primary) !important;
+    border: 3px solid var(--bs-primary);
+
+    position: sticky;
+    top: 64px;
+    z-index: 6;
+}
+.o_post:hover  {
+    border: 3px solid var(--bs-white) ;
+}
+.o_post:active  {
+    border: 3px solid var(--bs-primary);
+
+    position: sticky;
+    top: 0;
+}
+.o_post:focus  {
+    border: 3px solid var(--bs-primary);
+}
+.o_text {
+    margin: 0;
+    padding: 0;
+
+    color: white;
+    text-align: justify;
+
+    border: 3px solid var(--bs-primary);
+}
+
+/*  */
+
+.o_btn {
+    margin: 0;
+    padding: 0;
+ 
+    cursor: pointer;
+    color: white;
+    
+    background-color: var(--bs-primary) !important;
+    border: 3px solid var(--bs-primary);
+
+    position: sticky;
+}
+.o_btn:hover  {
+    border: 3px solid var(--bs-white);
+}
+.o_btn:active  {
+    border: 3px solid var(--bs-primary);
+}
+
+/*  */
+
+.o_top {
+    margin: 0;
+    padding: 0;
+
+    width: 60px;
+    height: 60px;
+
+    z-index: 6;
+
+    width: 60px;
+    height: 60px;
+
+    text-align: center;
+
+    position: fixed; 
+    bottom: 0px; 
+    right: 0px;
+
+    color: white;
+    font-size: 42.5px;
+    font-weight: 500;
+
+    background-color: var(--bs-primary);
+    border: 3px solid var(--bs-primary);
+}
+.o_top:hover {
+    border: 3px solid var(--bs-white);
+}
+.o_top:active {
+    border: 3px solid var(--bs-primary);
+}
+
+/*  */
+
+.flash {
+    padding: 10px;
+}
+.flash.success {
+    color: black;
+	background: #00ff48;
+}
+.flash.error {
+	background: #ff0000;
+}
+
+/*  */
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Adjust the scroll margin to the height of your sticky header */
+[id] {
+    scroll-margin-top: 190px; /* Change this value based on your sticky header height */
+}
+
+.o_eye {
+    background-color: var(--bs-primary);
+    border-radius: 50%;
+    border: 3px solid var(--bs-primary);
+}
+.o_eye:hover {
+    background-color: var(--bs-primary);
+    border-radius: 50%;
+    border: 3px solid white;
+
+}
